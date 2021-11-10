@@ -64,7 +64,7 @@ namespace Interfaces
                 n = n / 2;
                 d = d / 2;
             }
-            if (d / n % 1 == 0)
+            if (d % n == 0)
             {
                 d = d / n;
                 n = 1;
@@ -81,7 +81,43 @@ namespace Interfaces
 
         public int CompareTo(MyFrac other)
         {
-            return (nom / denom).CompareTo(other.nom / other.denom);
+            if (nom.CompareTo(other.nom) == 0)
+            {
+                if (denom.CompareTo(other.denom) == 0)
+                {
+                    return 0;
+                }
+                else if (denom.CompareTo(other.denom) == 1)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+            else if (nom.CompareTo(other.nom) == 1)
+            {
+                if (denom.CompareTo(other.denom) <= 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else
+            {
+                if (denom.CompareTo(other.denom) >= 0)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }

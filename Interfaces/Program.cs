@@ -14,6 +14,13 @@ namespace Interfaces
             testAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
             testSquaresDifference(new MyFrac(1, 3), new MyFrac(1, 6));
             testSquaresDifference(new MyComplex(1, 3), new MyComplex(1, 6));
+
+            List<MyFrac> myFracs = new List<MyFrac> { new MyFrac(1, 3), new MyFrac(1, 6), new MyFrac(2, 3), new MyFrac(4, 6) };
+            myFracs.Sort();
+            foreach (var item in myFracs)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
 
         static void testAPlusBSquare<T>(T a, T b) where T : IMyNumber<T>
