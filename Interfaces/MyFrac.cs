@@ -59,18 +59,17 @@ namespace Interfaces
         private void Normalise()
         {
             BigInteger n = nom, d = denom;
-            while (n % 2 == 0 && d % 2 == 0)
+            BigInteger previous = n % d;
+            BigInteger r = d % previous;
+            BigInteger temp;
+            while (r != 0)
             {
-                n = n / 2;
-                d = d / 2;
+                temp = r;
+                r = previous % r;
+                previous = temp;
             }
-            if (d % n == 0)
-            {
-                d = d / n;
-                n = 1;
-            }
-            nom = n;
-            denom = d;
+            nom = n / previous;
+            denom = d / previous;
         }
 
         public override string ToString()
